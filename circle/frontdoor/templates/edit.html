@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        
+
+
+
+<form action="{%url 'edit' circle.id%}" method="post">
+    {%csrf_token%}
+    <p>이름:<input type="text" name="name" value="{{circle.name}}"></p>
+    <p>소개:<input type="text" name="intro" value="{{circle.intro}}"></p>
+    <p>인원수:<input type="number" name="num" value="{{circle.num}}"></p>
+    <button type="submit">수정하기</button><br>
+    <a href="{%url 'detail' circle.id%}">취소</a>
+</form>
+
+{% endblock %}

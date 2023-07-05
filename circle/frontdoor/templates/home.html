@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p class="list">동아리 목록</p>
+    <a href="{% url 'new' %}">동아리 등록하기</a>
+    {% for circle in circles %}
+        <div>
+        <a href="{% url 'detail' circle.id %}">{{circle.name}}</a>
+        </div>
+    {%endfor%}
+{% endblock %}

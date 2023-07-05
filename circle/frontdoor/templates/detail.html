@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{circle.name}}</h1>
+    <div>
+    {{circle.intro}}<br>
+    {{circle.num}}<br>
+    </div>
+    <a href="{%url 'edit' circle.id%}">수정</a><br>
+    <a href="{%url 'delete' circle.id %}">삭제</a><br>
+    <a href="{%url 'home' %}">목차로 돌아가기</a><br><br>
+    
+    댓글<br>
+    {% for comment in circle.comment_set.all %}
+        {{comment.comment}}<br>
+        {{comment.time}}<br>
+    {% endfor %}
+    <form action="{% url 'comment' circle.id %}" method="POST">
+        {% csrf_token %}
+        새댓글:<textarea name="new_comment" cols="30" rows="10"></textarea><br>
+        <button type="submit">댓글쓰기</button>
+    </form>
+    
+
+
+{% endblock %}
